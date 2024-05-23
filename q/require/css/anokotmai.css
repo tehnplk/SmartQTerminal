@@ -1,0 +1,10 @@
+
+@charset "utf-8";
+
+@font-face {
+  font-family: 'Pridi';
+  src: url('../fonts/Pridi-Regular.ttf') format('truetype');
+  font-weight: normal;
+   font-style: normal;
+  /* Add additional font weights and styles if available */
+}

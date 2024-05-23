@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Smart Queue</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../require/img/favicon_moph.ico">
+          <!-- Tell the browser to be responsive to screen width -->
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+          <!-- Bootstrap 3.3.7 -->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/bootstrap.min.css">-->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/material-dashboard.css">-->
+      
+          <!-- Material-UI -->
+           
+           
+          <link rel="stylesheet" href="../require/css/mui.min.css" />
+      
+          <!-- Font Awesome -->
+          <link rel="stylesheet" href="../components/fontawesome-5.11.2/css/all.min.css">
+          <!-- Font Awesome Icons -->
+           
+          <!-- Material Icons -->
+           
+          <!-- Nucleo Icons -->
+          <link href="../require/css/nucleo-icons.css" rel="stylesheet" />
+          <link href="../require/css/nucleo-svg.css" rel="stylesheet" />
+      
+          <!-- Font -->
+          <link id="pagestyle" href="../require/css/material-dashboard.css" rel="stylesheet" />
+          <link rel="stylesheet" href="../require/css/anokotmai.css">
+      
+          <!-- Theme style -->
+          <link rel="stylesheet" href="../require/css/ThemesUI.css">
+      
+      </head>
+    <body>
+        <div class="content">
+            <div class="q_logo_fixed">
+                <img src="../require/img/logo.png"><span>Smart Queue</span>
+            </div>
+            <div class="q-modal">
+                <div class="q-modal-content modal-red text-center text-line-10">
+                    <div class="modal-content">
+                        <div class="q modal-header em1500">-</div>
+                        <div class="pname modal-body em450 padding-popup">-</div>
+                    </div>
+                </div>
+            </div>
+            <div class="q-modal-er">
+                <div class="q-modal-content-er modal-red text-center">
+                    <div class="modal-content">
+                        <div class="txt_er modal-header em600">-</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row padding-none">
+                    <div class="col-lg-12">
+                        <div class="box box-red box-solid">
+                            <div class="box-header with-border text-center">
+                                <span class="text-line-7"><i class="far fa-clock em200"></i><span class="em250">&nbsp;รอเรียกเข้าห้องฉุกเฉิน</span></span>
+                            </div>
+                        </div>
+						<div class="row">
+							<div class="col-md-6 no-padding no-margin">
+								<div class="box box-green box-solid">
+									<div class="box-header with-border text-center">
+										<span class="text-line-7"><span class="em180">&nbsp;ทั่วไป</span></span>
+									</div>
+									<div class="q-head q-head-green em125">
+										<div class="text-center" style="flex:1.3">หมายเลข</div>
+										<div class="text-center" style="flex:4.5">ชื่อ-นามสกุล</div>
+									</div>
+									<div class="box-body">
+										<div id="wait2" class="q-body em140" style="height: 60.5vh;">
+											<!-- left2.php -->
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 no-padding no-margin">
+								<div class="box box-blue box-solid">
+									<div class="box-header with-border text-center">
+										<span class="text-line-7"><span class="em180">&nbsp;ฉีดยาทำแผล</span></span>
+									</div>
+									<div class="q-head q-head-blue em125">
+										<div class="text-center" style="flex:1.3">หมายเลข</div>
+										<div class="text-center" style="flex:4.5">ชื่อ-นามสกุล</div>
+									</div>
+									<div class="box-body">
+										<div id="wait3" class="q-body em140" style="height: 60.5vh;">
+											<!-- left3.php -->
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+                    </div>
+                    
+                </div>
+                <!-- footer -->
+                <div class="row padding-none fixed-b w-100">
+                    <div class="row bg-black" style="height: 55px;">
+                        <div class="em175" style="margin-left: 35px; margin-right: 275px;">
+                            <marquee class="marquee">ข้อความประชาสัมพันธ์</marquee>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <audio id="er_alert">
+            <source src="../require/sound/er.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <script src="../require/js/jquery.min.js"></script>
+		<script src="../require/js/react.production.min.js"></script>
+        <script src="../require/js/react-dom.production.min.js"></script>
+        <script src="../require/js/mui.min.js"></script>
+    
+            <script src="../require/js/socket.io.js"></script>
+            <script src="../config/q_socket.js"></script>
+        <script>
+            function blinkX(callback, delay, repetitions) {
+                var x = 0;
+                var intervalID = window.setInterval(function () {
+                    callback();
+                    if (++x === repetitions) {
+                        window.clearInterval(intervalID);
+                    }
+                }, delay);
+            }
+
+            function reload(speed = 90 * 1000) {
+                $("#wait1").load('left1.php', function () {
+                    console.log('reload...left1');
+                    $("#wait1").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait1").delay(10 * 1000).animate({
+                        scrollTop: $('#wait1').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+				$("#wait2").load('left2.php', function () {
+                    console.log('reload...left2');
+                    $("#wait2").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait2").delay(10 * 1000).animate({
+                        scrollTop: $('#wait2').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+				$("#wait3").load('left3.php', function () {
+                    console.log('reload...left3');
+                    $("#wait3").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait3").delay(10 * 1000).animate({
+                        scrollTop: $('#wait3').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+                $("#wait4").load('right1.php', function () {
+                    console.log('reload...wait4');
+                    $("#wait4").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait4").delay(10 * 1000).animate({
+                        scrollTop: $('#wait4').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+				$("#wait5").load('right2.php', function () {
+                    console.log('reload...wait5');
+                    $("#wait5").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait5").delay(10 * 1000).animate({
+                        scrollTop: $('#wait5').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+            }
+            //Alert
+            /*var alert_timer;
+            function sound_alert(act) {
+                if (act == 'play') {
+                    function play_loop() {
+                        document.getElementById('er_alert').play();
+                    }
+                    document.getElementById('er_alert').play();
+                    alert_timer =  setInterval(play_loop,60*1000);
+                } else {
+                    document.getElementById('er_alert').pause();
+                    document.getElementById('er_alert').currentTime = 0;
+                }
+            }*/
+
+            //พักชั่วคราว
+            function q_toggle_er() {
+                var q_modal_er = document.querySelector(".q-modal-er");
+                q_modal_er.classList.toggle("show-q-modal-er");
+            }
+
+            function q_popup_er(txt_er) {
+                $('.q-modal-er').removeClass('show-q-modal-er');
+                $('.q-modal-er .txt_er').html(txt_er);
+                q_toggle_er();
+                //sound_alert('play');
+            }
+
+            //ปกติ
+            function q_toggle() {
+                var q_modal = document.querySelector(".q-modal");
+                q_modal.classList.toggle("show-q-modal");
+            }
+
+            function q_popup(q, pname, delay = 5000) {
+                $('.q-modal-er').removeClass('show-q-modal-er');
+                $('.q-modal .q').html(q.toUpperCase());
+                $('.q-modal .pname').html(pname);
+                //clearInterval(alert_timer);
+                //sound_alert('stop')
+                q_toggle();
+                setTimeout(function () {
+                    q_toggle();
+                }, delay);
+            }
+
+            $(document).ready(function () {
+
+                $(".marquee").load("marquee.php");
+                $("#hosname").load("../config/hosname.php");
+                reload();
+                setInterval(function () {
+                    reload();
+                    $(".marquee").load("marquee.php");
+                }, 15 * 1000);
+
+                socket.on("w", function (q) {
+                    if (q == "s99999") {
+                        reload();
+                    }
+                    if (q != "s99999") {
+                        pname = $(".q-modal .pname").load('get_name.php?q=' + q);
+                        q_popup(q, pname, 5000);
+                        reload();
+                    }
+                });
+
+                socket.on("x", function (q) {
+                    if (q == "s99999") {
+                        reload();
+                    }
+                    if (q != "s99999") {
+                        pname = $(".q-modal .pname").load('get_name.php?q=' + q);
+                        q_popup(q, pname, 5000);
+                        reload();
+                    }
+                });
+
+                socket.on("z", function (q) {
+                    
+                    console.log("z = " + q);
+                    
+                    if (q == "s99") {
+                        txt_er = 'ขณะนี้กำลังให้บริการผู้ป่วยฉุกเฉิน กรุณารอสักครู่';
+                        //txt_er = $(".q-modal-er .txt_er").load("marquee.php");
+                        q_popup_er(txt_er);
+                        $("#er_alert")[0].play();
+                        console.log("er sound");
+                    }
+                });
+
+            });
+        </script>
+
+    </body>
+</html>

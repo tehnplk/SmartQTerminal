@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Smart Queue</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../require/img/favicon_moph.ico">
+          <!-- Tell the browser to be responsive to screen width -->
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+          <!-- Bootstrap 3.3.7 -->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/bootstrap.min.css">-->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/material-dashboard.css">-->
+      
+          <!-- Material-UI -->
+           
+           
+          <link rel="stylesheet" href="../require/css/mui.min.css" />
+      
+          <!-- Font Awesome -->
+          <link rel="stylesheet" href="../components/fontawesome-5.11.2/css/all.min.css">
+          <!-- Font Awesome Icons -->
+           
+          <!-- Material Icons -->
+           
+          <!-- Nucleo Icons -->
+          <link href="../require/css/nucleo-icons.css" rel="stylesheet" />
+          <link href="../require/css/nucleo-svg.css" rel="stylesheet" />
+      
+          <!-- Font -->
+          <link id="pagestyle" href="../require/css/material-dashboard.css" rel="stylesheet" />
+          <link rel="stylesheet" href="../require/css/anokotmai.css">
+      
+          <!-- Theme style -->
+          <link rel="stylesheet" href="../require/css/ThemesUI.css">
+      
+      </head>
+    <body>
+        <div class="content">
+            <div class="q_logo_fixed">
+                <img src="../require/img/logo.png"><span>Smart Queue</span>
+            </div>
+            <div class="q-modal">
+                <div class="q-modal-content modal-red text-center text-line-10">
+                    <div class="modal-content">
+                        <div class="q modal-header em1500">-</div>
+                        <div class="ch modal-body em750 ">-</div>
+                        <!--<div class="pname modal-body em450 padding-popup">-</div>-->
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row padding-none">
+                    <!-- title -->
+                    <div>
+                        <div class="row bg-green margin-b-15">
+                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center pad">
+                                <img src="../require/img/moph.png" style="height: 90px; margin-top: 20px;">
+                            </div>
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 text-center pad">
+                                <div class="em200"><span id="hosname"></span></div>
+                                <div class="em150 text-line-9">ข้อมูลผู้รับบริการวันที่ <span id="datetime"></span></div>
+                                <div class="em150"><span id="time"></span></div>
+                            </div>
+                            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center pad">
+                                <img src="../require/img/logo_white.png" style="height: 90px; margin-top: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="q_logo_fixed">
+                        <img src="../require/img/logo.png"><span>Smart Queue</span>
+                    </div>
+                    <div class="col-lg-3 margin-t-5" style="width: 20%;">
+                        <div class="box box-red box-solid">
+                            <div class="box-header with-border text-center">
+                                <span class="text-line-7">
+                                    <span class="em160">&nbsp;จุดซักประวัติ</strong></span></span>
+                                </span>
+                            </div>
+                            <div class="q-called em300 text-line-12">
+                                <div class="ca1 q bg-red" style="flex:1 100%;">-</div>
+                            </div>
+                            <div class="box-body">
+                                <div id="wait1" class="q-body text-center em200 text-line-13" style="height: 46vh;">
+                                    <!-- wait1.php -->
+                                    <div class="q-rows-red">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                    <div class="q-rows-red">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 padding-left-none margin-t-5" style="width: 20%;">
+                        <div class="box box-purple box-solid">
+                            <div class="box-header with-border text-center">
+                                <span class="text-line-7">
+                                    <span class="em160">&nbsp;หน้าห้องตรวจ</strong></span></span>
+                                </span>            
+                            </div>
+                            <div class="q-called em300 text-line-12">
+                                <div class="ca2 q bg-purple" style="flex:1 100%;">-</div>
+                            </div>
+                            <div class="box-body">
+                                <div id="wait2" class="q-body text-center em200 text-line-13" style="height: 46vh;">
+                                    <!-- wait2.php -->
+                                    <div class="q-rows-purple">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                    <div class="q-rows-purple">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 padding-left-none margin-t-5" style="width: 20%;">
+                        <div class="box box-orange box-solid">
+                            <div class="box-header with-border text-center">
+                                <span class="text-line-7">
+                                    <span class="em200">&nbsp;ER</strong></span></span>
+                                </span>
+                            </div>
+                            <div class="q-called em300 text-line-12">
+                                <div class="ca3 q bg-orange" style="flex:1 100%;">-</div>
+                            </div>
+                            <div class="box-body">
+                                <div id="wait3" class="q-body text-center em200 text-line-13" style="height: 45.5vh;">
+                                    <!-- wait3.php -->
+                                    <div class="q-rows-orange">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                    <div class="q-rows-orange">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 padding-left-none margin-t-5" style="width: 20%;">
+                        <div class="box box-blue box-solid">
+                            <div class="box-header with-border text-center">
+                                <span class="text-line-7">
+                                    <span class="em200">&nbsp;COPD</strong></span></span>
+                                </span>
+                            </div>
+                            <div class="q-called em300 text-line-12">
+                                <div class="ca4 q bg-blue" style="flex:1 100%;">-</div>
+                            </div>
+                            <div class="box-body">
+                                <div id="wait4" class="q-body text-center em200 text-line-13" style="height: 45.5vh;">
+                                    <!-- wait4.php -->
+                                    <div class="q-rows-blue">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                    <div class="q-rows-blue">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 padding-left-none margin-t-5" style="width: 20%;">
+                        <div class="box box-pink box-solid">
+                            <div class="box-header with-border text-center">
+                                <span class="text-line-7">
+                                    <span class="em200">&nbsp;NCD</strong></span></span>
+                                </span>
+                            </div>
+                            <div class="q-called em300 text-line-12">
+                                <div class="ca4 q bg-pink" style="flex:1 100%;">-</div>
+                            </div>
+                            <div class="box-body">
+                                <div id="wait5" class="q-body text-center em200 text-line-13" style="height: 45.5vh;">
+                                    <!-- wait5.php -->
+                                    <div class="q-rows-pink">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                    <div class="q-rows-pink">
+                                        <div class="rowlist text-center" style="flex:1.5;">-</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div class="row padding-none fixed-b w-100">
+                    <div class="row bg-black" style="height: 55px;">
+                        <div class="em175" style="margin-left: 35px; margin-right: 275px;">
+                            <marquee class="marquee">ข้อความประชาสัมพันธ์</marquee>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../require/js/jquery.min.js"></script><script src="../require/js/react.production.min.js"></script>
+        <script src="../require/js/react-dom.production.min.js"></script>
+        <script src="../require/js/mui.min.js"></script>
+    
+        <script src="../require/js/socket.io.js"></script>
+        <script src="../config/q_socket.js"></script>
+        <script src="../require/js/jquery.timers-1.0.0.js"></script>
+        <script>
+            function blinkX(callback, delay, repetitions) {
+                var x = 0;
+                var intervalID = window.setInterval(function () {
+                    callback();
+                    if (++x === repetitions) {
+                        window.clearInterval(intervalID);
+                    }
+                }, delay);
+            }
+
+            function reload(speed = 45 * 1000) {
+                $("#wait1").load('wait1.php', function () {
+                    console.log('reload...wait1');
+                    $("#wait1").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait1").animate({
+                        scrollTop: $('#wait1').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+                $("#wait2").load('wait2.php', function () {
+                    console.log('reload...wait2');
+                    $("#wait2").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait2").animate({
+                        scrollTop: $('#wait2').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+                $("#wait3").load('wait3.php', function () {
+                    console.log('reload...wait3');
+                    $("#wait3").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait3").animate({
+                        scrollTop: $('#wait3').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+                $("#wait4").load('wait4.php', function () {
+                    console.log('reload...wait4');
+                    $("#wait4").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait4").animate({
+                        scrollTop: $('#wait4').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+                $("#wait5").load('wait5.php', function () {
+                    console.log('reload...wait5');
+                    $("#wait5").animate({
+                        scrollTop: 0
+                    });
+                    $("#wait5").animate({
+                        scrollTop: $('#wait5').prop("scrollHeight")
+                    }, speed, 'linear');
+                });
+            }
+
+            function q_toggle() {
+                var q_modal = document.querySelector(".q-modal");
+                q_modal.classList.toggle("show-q-modal");
+            }
+            // q & ch
+            function q_popup(q, ch, delay = 5000) {
+                $('.q-modal .q').html(q.toUpperCase());
+                $('.q-modal .ch').html(ch);
+                q_toggle();
+                setTimeout(function () {
+                    q_toggle();
+                }, delay);
+            }
+            // q & name
+            /*function q_popup(q, pname, delay = 5000) {
+             $('.q-modal .q').html(q.toUpperCase());
+             $('.q-modal .pname').html(pname);
+             q_toggle();
+             setTimeout(function () {
+             q_toggle();
+             }, delay);
+             }*/
+
+            $(document).ready(function () {
+
+                var socket = io("http://localhost:19009");
+                $(".marquee").load("marquee.php");
+                $("#hosname").load("../config/hosname.php");
+                $("#datetime").load("../config/date.php");
+                reload();
+                var timerloadwaitlist = setInterval(function () {
+                    reload();
+                    $(".marquee").load("marquee.php");
+                }, 15 * 1000);
+
+                var j = jQuery.noConflict();
+                j(document).ready(function () {
+                    j("#time").everyTime(1000, function (i) {
+                        j.ajax({
+                            url: "../config/time.php",
+                            cache: false,
+                            success: function (html) {
+                                j("#time").html('เวลา ' + html + ' น.');
+                            }
+                        })
+                    })
+                });
+
+                setInterval(function () {
+                    console.log('refresh data');
+                    j("#datetime").load("../config/date.php");
+
+                }, 30 * 1000);
+
+            });
+        </script>
+
+    </body>
+</html>

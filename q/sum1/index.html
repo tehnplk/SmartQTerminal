@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Smart Queue</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../require/img/favicon_moph.ico">
+          <!-- Tell the browser to be responsive to screen width -->
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+          <!-- Bootstrap 3.3.7 -->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/bootstrap.min.css">-->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/material-dashboard.css">-->
+      
+          <!-- Material-UI -->
+           
+           
+          <link rel="stylesheet" href="../require/css/mui.min.css" />
+      
+          <!-- Font Awesome -->
+          <link rel="stylesheet" href="../components/fontawesome-5.11.2/css/all.min.css">
+          <!-- Font Awesome Icons -->
+           
+          <!-- Material Icons -->
+           
+          <!-- Nucleo Icons -->
+          <link href="../require/css/nucleo-icons.css" rel="stylesheet" />
+          <link href="../require/css/nucleo-svg.css" rel="stylesheet" />
+      
+          <!-- Font -->
+          <link id="pagestyle" href="../require/css/material-dashboard.css" rel="stylesheet" />
+          <link rel="stylesheet" href="../require/css/anokotmai.css">
+      
+          <!-- Theme style -->
+          <link rel="stylesheet" href="../require/css/ThemesUI.css">
+      
+      </head>
+    <body>
+        <div class="content" style="margin-top: -15px;">
+            <div>
+                <div class="row bg-green margin-b-15">
+                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center pad">
+                        <img src="../require/img/moph.png" style="height: 90px; margin-top: 20px;">
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 text-center pad">
+                        <div class="em200"><span id="hosname"></span></div>
+                        <div class="em150 text-line-9">ข้อมูลผู้รับบริการวันที่ <span id="datetime"></span></div>
+                        <div class="em150"><span id="time"></span></div>
+                    </div>
+                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center pad">
+                        <img src="../require/img/logo_white.png" style="height: 90px; margin-top: 20px;">
+                    </div>
+                </div>
+            </div>
+            <div class="q_logo_fixed">
+                <img src="../require/img/logo.png"><span>Smart Queue</span>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="info-box bg-blue">
+                            <span class="info-box-icon"><i class="fas fa-hospital"></i></span>
+                            <div class="info-box-content  text-line-13">
+                                <span class="em175">แผนกผู้ป่วยนอก</span>
+                                <div class="progress" style="margin-bottom: 10px;">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <span class="em150">ทั้งหมด <span id="opd">0</span> คน</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 padding-left-none">
+                        <div class="info-box bg-maroon">
+                            <span class="info-box-icon"><i class="fas fa-procedures"></i></span>
+                            <div class="info-box-content  text-line-13">
+                                <span class="em175">แผนกผู้ป่วยใน</span>
+                                <div class="progress" style="margin-bottom: 10px;">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <span class="em150">ทั้งหมด <span id="ipt">0</span> คน</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="info-box bg-red" style="height: 24vh;">
+                            <span class="info-box-icon-2"><i class="fas fa-ambulance"></i></span>
+                            <div class="info-box-content text-line-10">
+                                <span class="em160">แผนกฉุกเฉิน</span>
+                                <div class="progress" style="margin-bottom: 10px;">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <ul class="nav em110 text-line-14">
+                                    <li>
+                                        <span>ทั้งหมด</span><span class="pull-right"><span class="padding-q" id="er">0</span>&nbsp;คน</span>
+                                    </li>
+                                    <li>
+                                        <span>รอรับบริการ</span><span class="pull-right"><span class="padding-q" id="er_curdep">0</span>&nbsp;คน</span>
+                                    </li>
+                                    <li>
+                                        <span>รับบริการแล้ว</span><span class="pull-right"><span class="padding-q" id="er_finish">0</span>&nbsp;คน</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 padding-left-none">
+                        <div class="info-box bg-purple" style="height: 24vh;">
+                            <span class="info-box-icon-2"><i class="fas fa-tooth"></i></span>
+                            <div class="info-box-content  text-line-10">
+                                <span class="em160">แผนกทันตกรรม</span>
+                                <div class="progress" style="margin-bottom: 10px;">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <ul class="nav em110 text-line-14">
+                                    <li>
+                                        <span>ทั้งหมด</span><span class="pull-right"><span class="padding-q" id="dt">0</span>&nbsp;คน</span>
+                                    </li>
+                                    <li>
+                                        <span>รอรับบริการ</span><span class="pull-right"><span class="padding-q" id="dt_curdep">0</span>&nbsp;คน</span>
+                                    </li>
+                                    <li>
+                                        <span>รับบริการแล้ว</span><span class="pull-right"><span class="padding-q" id="dt_finish">0</span>&nbsp;คน</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12 padding-left-none">
+                        <div class="info-box bg-orange" style="height: 24vh;">
+                            <span class="info-box-icon-2"><i class="far fa-calendar-check"></i></span>
+                            <div class="info-box-content  text-line-10">
+                                <span class="em160">ผู้ป่วยนัดมาวันนี้</span>
+                                <div class="progress" style="margin-bottom: 10px;">
+                                    <div class="progress-bar" style="width: 100%;"></div>
+                                </div>
+                                <ul class="nav em110 text-line-14">
+                                    <li>
+                                        <span>ทั้งหมด</span><span class="pull-right"><span class="padding-q" id="oapp">0</span>&nbsp;คน</span>
+                                    </li>
+                                    <li>
+                                        <span>มาตามนัด</span><span class="pull-right"><span class="padding-q" id="oapp_in">0</span>&nbsp;คน</span>
+                                    </li>
+                                    <li>
+                                        <span>ขาดนัด</span><span class="pull-right"><span class="padding-q" id="oapp_notin">0</span>&nbsp;คน</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="box box-solid text-center" style="height: 23vh;">
+                        <div class="box-body">
+                            <div class="row margin-t-5">
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="em160 bg-blue"><i class="fas fa-notes-medical"></i>&nbsp;จุดซักประวัติ</div>
+                                    <ul class="nav text-left  text-black em150 text-line-10  margin-t-5" style="padding-left: 30px; padding-right: 30px;">
+                                        <li>
+                                            <span>รอรับบริการ</span><span class="pull-right"><span class="padding-q" id="ccsc">0</span>&nbsp;คน</span>
+                                        </li>
+                                        <li>
+                                            <span>รับบริการแล้ว</span><span class="pull-right"><span class="padding-q" id="sc_finish">0</span>&nbsp;คน</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="em160 bg-red"><i class="fa fa-stethoscope"></i>&nbsp;ห้องตรวจโรค</div>
+                                    <ul class="nav text-left  text-black em150 text-line-10 margin-t-5" style="padding-left: 30px; padding-right: 30px;">
+                                        <li>
+                                            <span>รอรับบริการ</span><span class="pull-right"><span class="padding-q" id="ccdx">0</span>&nbsp;คน</span>
+                                        </li>
+                                        <li>
+                                            <span>รับบริการแล้ว</span><span class="pull-right"><span class="padding-q" id="dx_finish">0</span>&nbsp;คน</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="em160 bg-purple"><i class="fa fa-pills"></i>&nbsp;ห้องจ่ายยา</div>
+                                    <ul class="nav text-left text-black em150 text-line-10  margin-t-5" style="padding-left: 30px; padding-right: 30px;">
+                                        <li>
+                                            <span>รอรับบริการ</span><span class="pull-right"><span class="padding-q" id="ccrx">0</span>&nbsp;คน</span>
+                                        </li>
+                                        <li>
+                                            <span>รับบริการแล้ว</span><span class="pull-right"><span class="padding-q" id="rx_finish">0</span>&nbsp;คน</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- footer -->
+                <div class="row padding-none fixed-b w-100">
+                    <div class="row bg-black" style="height: 55px;">
+                        <div class="em175" style="margin-left: 35px; margin-right: 275px;">
+                            <marquee class="marquee">ข้อความประชาสัมพันธ์</marquee>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../require/js/jquery.timers-1.0.0.js"></script>
+        <script src="../require/js/jquery.min.js"></script>
+		<script src="../require/js/react.production.min.js"></script>
+        <script src="../require/js/react-dom.production.min.js"></script>
+        <script src="../require/js/mui.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $(".marquee").load("data/marquee.php");
+                $("#hosname").load("../config/hosname.php");
+
+                $("#datetime").load("data/date.php");
+
+                $("#opd").load("data/hos_opd.php");
+                $("#ipt").load("data/hos_ipt.php");
+                $("#er").load("data/hos_er.php");
+                $("#dt").load("data/hos_dent.php");
+                $("#oapp").load("data/hos_oapp.php");
+                
+                $("#er_curdep").load("data/hos_er_curdep.php");
+                $("#er_finish").load("data/hos_er_finish.php");
+                
+                $("#dt_curdep").load("data/hos_dent_curdep.php");
+                $("#dt_finish").load("data/hos_dent_finish.php");
+                
+                $("#oapp_in").load("data/hos_oapp_in.php");
+                $("#oapp_notin").load("data/hos_oapp_notin.php");
+                
+                $("#ccsc").load("data/cc_sc.php");
+                $("#ccdx").load("data/cc_dx.php");
+                $("#ccrx").load("data/cc_rx_regis.php");
+
+                $("#sc_finish").load("data/hos_sc_finish.php");
+                $("#dx_finish").load("data/hos_dx_finish.php");
+                $("#rx_finish").load("data/hos_rx_finish_regis.php");
+
+                var j = jQuery.noConflict();
+                j(document).ready(function () {
+                    j("#time").everyTime(1000, function (i) {
+                        j.ajax({
+                            url: "data/time.php",
+                            cache: false,
+                            success: function (html) {
+                                j("#time").html('เวลา ' + html + ' น.');
+                            }
+                        })
+                    })
+                });
+
+                setInterval(function () {
+                    console.log('refresh data');
+                    j("#datetime").load("data/date.php");
+
+                    j("#opd").load("data/hos_opd.php");
+                    j("#ipt").load("data/hos_ipt.php");
+                    j("#er").load("data/hos_er.php");
+                    j("#dt").load("data/hos_dent.php");
+                    j("#oapp").load("data/hos_oapp.php");
+                    
+                    j("#er_curdep").load("data/hos_er_curdep.php");
+                    j("#er_finish").load("data/hos_er_finish.php");
+
+                    j("#dt_curdep").load("data/hos_dent_curdep.php");
+                    j("#dt_finish").load("data/hos_dent_finish.php");
+                    
+                    j("#oapp_in").load("data/hos_oapp_in.php");
+                    j("#oapp_notin").load("data/hos_oapp_notin.php");
+                    
+                    j("#ccsc").load("data/cc_sc.php");
+                    j("#ccdx").load("data/cc_dx.php");
+                    j("#ccrx").load("data/cc_rx_regis.php");
+
+                    j("#sc_finish").load("data/hos_sc_finish.php");
+                    j("#dx_finish").load("data/hos_dx_finish.php");
+                    j("#rx_finish").load("data/hos_rx_finish_regis.php");
+
+                }, 30 * 1000);
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Smart Queue</title>
+        <link rel="shortcut icon" type="image/x-icon" href="../require/img/favicon_moph.ico">
+          <!-- Tell the browser to be responsive to screen width -->
+          <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+          <!-- Bootstrap 3.3.7 -->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/bootstrap.min.css">-->
+          <!--<link rel="stylesheet" href="../components/bootstrap/css/material-dashboard.css">-->
+      
+          <!-- Material-UI -->
+           
+           
+          <link rel="stylesheet" href="../require/css/mui.min.css" />
+      
+          <!-- Font Awesome -->
+          <link rel="stylesheet" href="../components/fontawesome-5.11.2/css/all.min.css">
+          <!-- Font Awesome Icons -->
+           
+          <!-- Material Icons -->
+           
+          <!-- Nucleo Icons -->
+          <link href="../require/css/nucleo-icons.css" rel="stylesheet" />
+          <link href="../require/css/nucleo-svg.css" rel="stylesheet" />
+      
+          <!-- Font -->
+          <link id="pagestyle" href="../require/css/material-dashboard.css" rel="stylesheet" />
+          <link rel="stylesheet" href="../require/css/anokotmai.css">
+      
+          <!-- Theme style -->
+          <link rel="stylesheet" href="../require/css/ThemesUI.css">
+      
+      </head>
+<body>
+    <div class="content">
+        <div class="q_logo_fixed">
+            <img src="../require/img/logo.png"><span>Smart Queue</span>
+        </div>
+        <div class="q-modal">
+            <div class="q-modal-content modal-red text-center text-line-10">
+                <div class="modal-content">
+                    <div class="q modal-body em1000">-</div>
+                    <div class="ch modal-body em450 ">-</div>
+                    <div class="pname modal-body em450 padding-popup">-</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row padding-none">
+                <div class="col-lg-4" style="width:40%">
+                    <div class="box box-blue box-solid">
+                        <div class="box-header with-border text-center">
+                            <span class="text-line-7"><span class="em200">&nbsp;รอซักประวัติ</span></span>
+                        </div>
+                        <div class="q-head q-head-blue em125">
+                            <div class="text-center" style="flex:1.5">หมายเลข</div>
+                            <div class="text-center" style="flex:4.5">ชื่อ-นามสกุล</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="wait1" class="q-body em140" style="height: 70.5vh;">
+                                <!-- left.php -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 padding-left-none" style="width:20%">
+                    <div class="box box-blue box-solid " >
+                        <div class="box-header">
+                            <div class="q-called">
+                                <div style="flex:1"><span class="em140">&nbsp;ซักประวัติ โต๊ะ1</span></span></div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="q-called">
+                                <div class="sc1 q em300 text-line-10 bg-blue" style="flex:1 100%;">-</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="box box-blue box-solid " >
+                        <div class="box-header">
+                            <div class="q-called">
+                                <div style="flex:1"><span class="em140">&nbsp;ซักประวัติ โต๊ะ2</span></span></div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="q-called">
+                                <div class="sc2 q em300 text-line-10 bg-blue" style="flex:1 100%;">-</div>
+                            </div>
+                        </div>
+                    </div>
+					<div class="box box-red box-solid " >
+                        <div class="box-header">
+                            <div class="q-called">
+                                <div style="flex:1"><span class="em140">&nbsp;รอพบแพทย์ </span></span></div>
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <div class="q-called">
+                                <div class="a q em300 text-line-10 bg-red" style="flex:1 100%;">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 padding-left-none" style="width:40%">
+                    <div class="box box-red box-solid no-padding no-margin">
+                        <div class="box-header with-border text-center">
+                            <span class="text-line-7"><span class="em200">&nbsp;หน้าห้องตรวจ</span></span>
+                        </div>
+                        <div class="q-head q-head-red em125">
+                            <div class="text-center" style="flex:1.5">หมายเลข</div>
+                            <div class="text-center" style="flex:4.5">ชื่อ-นามสกุล</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="wait2" class="q-body text-center em125" style="height: 30vh;">
+                                <!-- right.php -->
+                            </div>
+                        </div>
+                    </div>
+					<div class="box box-green box-solid  no-padding no-margin">
+                        <div class="box-header with-border text-center">
+                            <span class="text-line-7"><span class="em200">&nbsp;หลังพบแพทย์</span></span>
+                        </div>
+                        <div class="q-head q-head-green em125">
+                            <div class="text-center" style="flex:1.5">หมายเลข</div>
+                            <div class="text-center" style="flex:4.5">ชื่อ-นามสกุล</div>
+                        </div>
+                        <div class="box-body">
+                            <div id="wait3" class="q-body text-center em125" style="height: 19vh;">
+                                <!-- right1.php -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer -->
+            <div class="row padding-none fixed-b w-100">
+                <div class="row bg-black" style="height: 55px;">
+                    <div class="em140" style="margin-left: 35px; margin-right: 275px;">
+                        <marquee class="marquee">ข้อความประชาสัมพันธ์</marquee>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+ 
+    <script src="../require/js/jquery.min.js"></script>
+	<script src="../require/js/react.production.min.js"></script>
+    <script src="../require/js/react-dom.production.min.js"></script>
+    <script src="../require/js/mui.min.js"></script>
+
+        <script src="../require/js/socket.io.js"></script>
+        <script src="../config/q_socket.js"></script>
+        <script>
+            function blinkX(callback, delay, repetitions) {
+              var x = 0;
+              var intervalID = window.setInterval(function () {
+                callback();
+                if (++x === repetitions) {
+                  window.clearInterval(intervalID);
+                }
+              }, delay);
+            }
+        
+			function q_toggle() {
+				var q_modal = document.querySelector(".q-modal");
+				q_modal.classList.toggle("show-q-modal");
+			}
+
+			function q_popup(q, ch,pname, delay = 5000) {
+				$('.q-modal .q').html(q.toUpperCase());
+				$('.q-modal .ch').html(ch);
+				$('.q-modal .pname').html(pname);
+				q_toggle();
+				setTimeout(function () {
+					q_toggle();
+				}, delay);
+			}
+        
+            function reload(speed = 60 * 1000) {
+              $("#wait1").load('left.php', function () {
+                console.log('reload...left');
+                $("#wait1").animate({
+                  scrollTop: 0
+                });
+                $("#wait1").animate({
+                  scrollTop: $('#wait1').prop("scrollHeight")
+                }, speed, 'linear');
+              });
+              $("#wait2").load('right.php', function () {
+                        console.log('reload...right');
+                        $("#wait2").animate({
+                            scrollTop: 0
+                        });
+                        $("#wait2").animate({
+                            scrollTop: $('#wait2').prop("scrollHeight")
+                        }, speed, 'linear');
+                    });
+					$("#wait3").load('right1.php', function () {
+                        console.log('reload...wait3');
+                        $("#wait3").animate({
+                            scrollTop: 0
+                        });
+                        $("#wait3").animate({
+                            scrollTop: $('#wait3').prop("scrollHeight")
+                        }, speed, 'linear');
+                    });
+            }
+        
+            $(document).ready(function () {
+			$(".marquee").load("marquee.php");
+			$("#hosname").load("../config/hosname.php");
+			reload();
+			var timerloadwaitlist = setInterval(function () {
+				reload();
+				$(".marquee").load("marquee.php");
+				$("#wait1").load('left.php');
+				$("#wait2").load('right.php');
+			}, 15 * 1000);
+        /*
+			var timerloadq = setInterval(function () {
+                            $(".a.q").html("-");
+                            $(".a.name").html("-");
+			}, 60 * 1000);
+			*/
+				socket.on("sc1", function (q) {
+                    if (q == "s99999") {
+                        reload();
+                        $(".sc1.q").html("-");
+                        $(".sc1.name").html("-");
+                    }
+                    if (q != "s99999") {
+						pname = $(".q-modal .pname").load('get_name.php?q=' + q);
+                        q_popup(q, 'ซักประวัติ โต๊ะ1',pname, 5000);
+                        $(".sc1.q").html(q.toUpperCase());
+                        $(".sc1.name").load("get_name.php?q=" + q);
+                        reload();
+                        setTimeout(function () {
+                            blinkX(function () {
+                                $(".sc1.q").toggleClass("q_blink")
+                            }, 650, 16);
+                        }, 5000);
+                    }
+                });
+				socket.on("sc2", function (q) {
+                    if (q == "s99999") {
+                        reload();
+                        $(".sc2.q").html("-");
+                        $(".sc2.name").html("-");
+                    }
+                    if (q != "s99999") {
+						pname = $(".q-modal .pname").load('get_name.php?q=' + q);
+                        q_popup(q, 'ซักประวัติ โต๊ะ2',pname, 5000);
+                        $(".sc2.q").html(q.toUpperCase());
+                        $(".sc2.name").load("get_name.php?q=" + q);
+                        reload();
+                        setTimeout(function () {
+                            blinkX(function () {
+                                $(".sc2.q").toggleClass("q_blink")
+                            }, 650, 16);
+                        }, 5000);
+                    }
+                }); 
+				
+                socket.on("a", function (q) {
+                    if (q == "s99999") {
+                        reload();
+                        $(".a.q").html("-");
+                        $(".a.name").html("-");
+                    }
+                    if (q != "s99999") {
+						pname = $(".q-modal .pname").load('get_name.php?q=' + q);
+                        q_popup(q, 'รอพบแพทย์',pname, 5000);
+                        $(".a.q").html(q.toUpperCase());
+                        $(".a.name").load("get_name.php?q=" + q);
+                        reload();
+                        setTimeout(function () {
+                            blinkX(function () {
+                                $(".a.q").toggleClass("q_blink")
+                            }, 650, 16);
+                        }, 5000);
+                    }
+                });  
+                socket.on("b", function (q) {
+                    if (q == "s99999") {
+                        reload();
+                        $(".b.q").html("-");
+                        $(".b.name").html("-");
+                    }
+                    if (q != "s99999") {
+						pname = $(".q-modal .pname").load('get_name.php?q=' + q);
+                        q_popup(q, 'หลังพบแพทย์',pname, 5000);
+                        $(".b.q").html(q.toUpperCase());
+                        $(".b.name").load("get_name.php?q=" + q);
+                        reload();
+                        setTimeout(function () {
+                            blinkX(function () {
+                                $(".b.q").toggleClass("q_blink")
+                            }, 650, 16);
+                        }, 5000);
+                    }
+                });   
+
+        
+        
+        
+            });
+          </script>
+
+</body>
+</html>
